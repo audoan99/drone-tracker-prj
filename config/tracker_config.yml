@@ -1,0 +1,11 @@
+%YAML:1.0
+NvDCF:
+  useUniqueID: 1
+  maxTargetsPerStream: 100      # Allow tracking many drones/objects
+  minDetectorConfidence: 0.3    # Ignore low-confidence detections
+  maxTrackingConfidence: 1.0
+  minTrackerConfidence: 0.2
+  featureImgSizeLevel: 2        # Balanced accuracy/speed for 720p/1080p
+  SearchRegionPaddingScale: 2   # Look further for fast-moving drones
+  useColorNames: 1
+  useHog: 1

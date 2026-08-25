@@ -1,0 +1,24 @@
+[property]
+gpu-id=0
+net-scale-factor=0.00392156862745098
+model-color-format=0
+
+custom-lib-path=/opt/nvidia/deepstream/deepstream/lib/libnvdsinfer_custom_impl_Yolo.so
+parse-bbox-func-name=NvDsInferParseYolo
+
+# Point to the YOLOv8n model we generated earlier
+model-engine-file=/app/resource/models/yolov8n_fp32.engine
+labelfile-path=/app/resource/models/labels.txt
+
+# Network Properties (0 = FP32, which is best for GTX 1080 Ti)
+network-mode=0                
+num-detected-classes=80       # YOLOv8 COCO has 80 classes
+interval=0
+gie-unique-id=1
+infer-dims=3;640;640
+maintain-aspect-ratio=1
+
+[class-attrs-all]
+threshold=0.4
+eps=0.2
+group-threshold=1

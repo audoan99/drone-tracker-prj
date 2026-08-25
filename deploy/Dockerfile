@@ -1,0 +1,21 @@
+FROM nvcr.io/nvidia/deepstream:6.1.1-devel
+
+# Set working directory
+WORKDIR /app
+
+# Install dependencies for RTSP Streaming and C++ Build Toolchain
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    libgstrtspserver-1.0-0 \
+    libgstrtspserver-1.0-dev \
+    gstreamer1.0-rtsp \
+    build-essential \
+    cmake \
+    git \
+    pkg-config \
+    && rm -rf /var/lib/apt/lists/*
+
+# Copy the entire project into /app in the container
+COPY . /app/
+
+# Run DeepStream with the config file in the config/ directory
+CMD ["deepstream-app", "-c", "config/deepstream_app_config.txt"]
