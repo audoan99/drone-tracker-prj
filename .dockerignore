@@ -1,0 +1,13 @@
+.git
+.gitignore
+build/
+Build/
+build-*/
+*.o
+*.obj
+*.log
+*.tmp
+*.bak
+*.mp4
+*.mkv
+*.engine

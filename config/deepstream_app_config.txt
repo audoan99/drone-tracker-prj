@@ -25,7 +25,7 @@ gpu-id=0
 gie-unique-id=1
 nvbuf-memory-type=0
 # LINKS TO THE SUB-CONFIG FOR THE AI MODEL
-config-file=config_infer_primary.txt
+config-file=/app/config/config_infer_primary.txt
 
 # Hardware Object Tracker
 [tracker]
@@ -34,7 +34,7 @@ tracker-width=640
 tracker-height=384
 ll-lib-file=/opt/nvidia/deepstream/deepstream/lib/libnvds_nvmultiobjecttracker.so
 # LINKS TO THE SUB-CONFIG FOR THE TRACKER ALGORITHM (Crucial for drones)
-ll-config-file=tracker_config.yml
+ll-config-file=/app/config/tracker_config.yml
 gpu-id=0
 display-tracking-id=1
 

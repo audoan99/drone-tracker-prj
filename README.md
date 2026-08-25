@@ -46,10 +46,10 @@ drone-tracker-prj/
 docker build -f deploy/Dockerfile -t drone-tracker:dev .
 
 ### Step 2: Run Command for Test
-docker run --runtime=nvidia -it --rm --network host \
+docker run --gpus all -it --rm --network host \
     -v $(pwd):/app \
     --name drone_dev \
-    drone-tracker:latest /bin/bash
+    drone-tracker:dev /bin/bash
 
 ### Step 3: Build C++ Application
 mkdir -p build && cd build

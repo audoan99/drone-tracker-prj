@@ -6,12 +6,18 @@ model-color-format=0
 custom-lib-path=/opt/nvidia/deepstream/deepstream/lib/libnvdsinfer_custom_impl_Yolo.so
 parse-bbox-func-name=NvDsInferParseYolo
 
-# Point to the YOLOv8n model we generated earlier
+# Point to the ONNX model directly. On first run, nvinfer builds a fresh
+# TensorRT engine matched to whatever GPU is actually present (RTX 3080),
+# and caches it here. Delete this .engine file any time you move to a
+# different GPU/TensorRT version and let nvinfer rebuild it again.
+onnx-file=/app/resource/models/yolov8n.onnx
 model-engine-file=/app/resource/models/yolov8n_fp32.engine
 labelfile-path=/app/resource/models/labels.txt
 
-# Network Properties (0 = FP32, which is best for GTX 1080 Ti)
-network-mode=0                
+# Network Properties (0 = FP32, 1 = FP16, 2 = INT8)
+# RTX 3080 has full-rate FP16 Tensor Cores (1080 Ti does not) - FP16 is a
+# safe, free latency win here if you want it. FP32 still works as-is.
+network-mode=0
 num-detected-classes=80       # YOLOv8 COCO has 80 classes
 interval=0
 gie-unique-id=1

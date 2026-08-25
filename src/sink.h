@@ -6,6 +6,6 @@
 
 // Creates the encoding chain and RTSP sink. 
 // Returns the first element (nvvideoconvert) to be linked from the pipeline.
-GstElement* create_sink_bin(int rtsp_port);
+GstElement* create_sink_bin(int port);
 
 #endif // SINK_H
